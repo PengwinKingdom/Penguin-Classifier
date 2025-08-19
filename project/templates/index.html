@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin Classifier</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+</head>
+<body>
+    <!-- Page title -->
+    <h1 class="title">Penguin Classifier</h1>
+    <form id="uploadForm"  action="/predict" method="POST" enctype="multipart/form-data">
+
+         <!-- Upload area -->
+        <div class="uploadBox" id="dropArea">
+            <input type="file" id="fileInput" name="file" accept="image/*" hidden>
+            <p id="uploadText">Click to select your penguin image <br>
+                JPG, PNG or WEBP
+            </p>
+
+            <!-- Image preview -->
+            <img id="preview" src="" alt="Image preview">
+
+            
+        </div>
+
+         <!-- Loading indicator -->
+        <div id='loadingContainer' hidden>
+            <div id="loadingIcon" class="loadingIcon" aria-live="polite" aria-label="Loading" ></div>
+            <p id="loadingText">Loading<span class="dots"></span></p>
+        </div>
+
+    </form>
+
+    <h2 id="result"></h2>
+<script src="{{url_for('static',filename='js/script.js')}}" defer></script>
+</body>
+</html>
