@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin Classifier Results</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/result.css')}}">
+</head>
+<body>
+    <!-- Title -->
+    <h1 class="title">Penguin Classifier</h1>
+
+    <!-- Result container -->
+    <div class="container">
+        <div class="imageBox">
+            <img src="{{image_url}}" alt="Penguin image" class="uploadedImage"> 
+        </div>
+
+         <!-- Prediction result -->
+        <div class="box">
+            <h2 class="species">{{species}} Penguin</h2>
+            <p class="confidence">Model confidence: {{confidence}}%</p>
+        </div>
+    </div>
+
+     <!-- Return Button -->
+    <button class="predictAgainBtn" onclick="window.location.href='{{ url_for("index") }}'">Predict again</button>
+</body>
+</html>
