@@ -1,0 +1,80 @@
+body{
+    background-color: #DAE8FF;
+    margin:0;
+    padding:25px;
+}
+.title{
+    color:#0019C6;
+    text-align: center;
+    font-size: 4.5rem;
+    margin-bottom: 30px;
+}
+.uploadBox{
+    border:6px double #5683FF;
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    width: 300px;
+    margin: 50px auto 0 auto;
+    transition: background-color 0.3s ease;
+}
+.uploadBox:hover{
+    background-color: #101030;
+}
+.uploadBox p{
+    margin: 10px 0;
+    font-size: 20px;
+    color: #5683FF;
+}
+/* Cuando ya hay imagen, mantenlo blanco y sin hover */
+.hasImage.uploadBox { background-color: white; }
+.hasImage.uploadBox:hover { background-color: white; }
+
+#preview{
+    display: none;
+    width: 100%;
+    max-width: 300px;
+    object-fit: contain;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(86, 131, 255, 1);
+}
+#loadingContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+#loadingContainer[hidden]{
+    display: none !important;
+}
+.loadingIcon {
+    border: 8px solid white; 
+    border-top: 8px solid #0019C6; 
+    border-radius: 60%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto; /* Centrar */
+}
+#loadingText{
+    margin-top: 8px;
+    font-size: 1.2em;
+    color: #0019C6;
+}
+.dots::after{
+    content: "";
+    animation: dots 1.5s steps(3,end)infinite;
+}
+@keyframes dots {
+    0% {content: "";}
+    20% {content: ".";}
+    50% {content: "..";}
+    100% {content: "...";}
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
