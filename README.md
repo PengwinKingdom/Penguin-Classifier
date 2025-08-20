@@ -21,6 +21,24 @@
   <li>Real-time prediction directly from uploaded images</li>
 </ul>
 
+<h2>✨ Project Structure</h2>
+project/
+├── model/
+│   ├── class_indices.json
+│   ├── penguin_classifier.h5
+├── static/
+│   ├── css/
+│   │   ├── result.css
+│   │   ├── style.css
+│   ├── js/
+│   │   ├── script.js
+├── templates/
+│   ├── index.html
+│   ├── result.html
+├── train_model.py
+├── app.py
+└── train_model.py
+
 <h2>📚 Topics I Learned</h2>
 <ul>
   <li>Preprocessing and normalizing image datasets for classification tasks</li>
