@@ -10,7 +10,7 @@ app=Flask(__name__)
 
 MODEL_DIR = "model"
 MODEL_PATH = os.path.join(MODEL_DIR, "penguin_classifier.h5")
-MODEL_URL = os.getenv("MODEL_URL", "https://drive.google.com/file/d/1q4kJQPJf0-0jRyv2wfYV7XCjMxYLX-OT/view?usp=drive_link")
+MODEL_URL = os.getenv("MODEL_URL", "")
 
 def ensure_model_downloaded():
     """Download the model file if it does not exist locally."""
@@ -18,7 +18,7 @@ def ensure_model_downloaded():
     if os.path.exists(MODEL_PATH):
         return
 
-    if not MODEL_URL or MODEL_URL == "https://drive.google.com/file/d/1q4kJQPJf0-0jRyv2wfYV7XCjMxYLX-OT/view?usp=drive_link":
+    if not MODEL_URL or MODEL_URL == "":
         raise RuntimeError(
             "MODEL_URL is not set. Please configure a valid link to the model file."
         )
