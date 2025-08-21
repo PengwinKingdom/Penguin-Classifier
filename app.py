@@ -8,7 +8,32 @@ from werkzeug.utils import secure_filename
 
 app=Flask(__name__)
 
-model=load_model('model/penguin_classifier.h5')
+MODEL_DIR = "model"
+MODEL_PATH = os.path.join(MODEL_DIR, "penguin_classifier.h5")
+MODEL_URL = os.getenv("MODEL_URL", "https://drive.google.com/file/d/1q4kJQPJf0-0jRyv2wfYV7XCjMxYLX-OT/view?usp=drive_link")
+
+def ensure_model_downloaded():
+    """Download the model file if it does not exist locally."""
+    os.makedirs(MODEL_DIR, exist_ok=True)
+    if os.path.exists(MODEL_PATH):
+        return
+
+    if not MODEL_URL or MODEL_URL == "https://drive.google.com/file/d/1q4kJQPJf0-0jRyv2wfYV7XCjMxYLX-OT/view?usp=drive_link":
+        raise RuntimeError(
+            "MODEL_URL is not set. Please configure a valid link to the model file."
+        )
+
+    try:
+        import gdown
+        print(f"[model] Downloading from: {MODEL_URL}")
+        gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
+    except Exception as e:
+        raise RuntimeError(f"Model download failed: {e}")
+
+
+ensure_model_downloaded()
+
+model=load_model(MODEL_PATH)
 
 # List of penguin species supported by the model
 class_names =['Adelie','African','Chinstrap','Emperor',
