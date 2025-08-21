@@ -22,7 +22,8 @@
 </ul>
 
 <h2>✨ Project Structure</h2>
-project/
+<p>
+  project/
 ├── model/
 │   ├── class_indices.json
 │   ├── penguin_classifier.h5
@@ -38,6 +39,7 @@ project/
 ├── train_model.py
 ├── app.py
 └── train_model.py
+</p>
 
 <h2>📚 Topics I Learned</h2>
 <ul>
@@ -46,5 +48,7 @@ project/
   <li>Building a functional web app with Flask and integrating ML models</li>
   <li>Creating user-friendly frontends with HTML and CSS</li>
 </ul>
+
+
 
 
