@@ -22,7 +22,6 @@
 </ul>
 
 <h2>✨ Project Structure</h2>
-<p>
   project/
 ├── model/
 │   ├── class_indices.json
@@ -39,7 +38,6 @@
 ├── train_model.py
 ├── app.py
 └── train_model.py
-</p>
 
 <h2>📚 Topics I Learned</h2>
 <ul>
@@ -49,6 +47,55 @@
   <li>Creating user-friendly frontends with HTML and CSS</li>
 </ul>
 
+## ⚙️ Installation & Usage
+## 1. Clone the repository
+   ```bash
+   git clone https://github.com/PengwinKingdom/Penguin-Classifier.git
+   cd Penguin-Classifier
+   ```
 
+## 2. Create and activate a virtual environment
+   **Mac/Linux**
+   ```bash
+   python -m venv env
+   source env/bin/activate
+   ```
+   **Windows**
+   ```bash
+   python -m venv env
+   .\env\Scripts\activate
+   ```
+   
+## 3. Install dependencies
+   ```bash
+   pip install -r requirements.txt
+   ```
+   
+## 4. Set the model URL
+   **Mac/Linux**
+   ```bash
+   export MODEL_URL="https://drive.google.com/uc?id=1q4kJQPJf0-0jRyv2wfYV7XCjMxYLX-OT"
+   ```
+   **Windows**
+   ```bash
+   setx MODEL_URL "https://drive.google.com/uc?id=1q4kJQPJf0-0jRyv2wfYV7XCjMxYLX-OT"
+   ```
+   
+## 5. Run the application
+   **Mac/Linux**
+   ```bash
+   export FLASK_APP=app.py
+   export FLASK_ENV=development
+   flask run
+   ```
+   **Windows**
+   ```bash
+   $env:FLASK_APP="app.py"
+   $env:FLASK_ENV="development"
+   flask run
+   ```
 
-
+## 6. Open your browser at:
+   http://127.0.0.1:5000
+   
+   
