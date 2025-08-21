@@ -5,12 +5,13 @@ import numpy as np
 import os
 from io import BytesIO
 from werkzeug.utils import secure_filename
+import gdown
 
 app=Flask(__name__)
 
 MODEL_DIR = "model"
 MODEL_PATH = os.path.join(MODEL_DIR, "penguin_classifier.h5")
-MODEL_URL = os.getenv("MODEL_URL", "")
+MODEL_URL = os.getenv("MODEL_URL", "https://drive.google.com/file/d/1q4kJQPJf0-0jRyv2wfYV7XCjMxYLX-OT")
 
 def ensure_model_downloaded():
     """Download the model file if it does not exist locally."""
@@ -18,15 +19,14 @@ def ensure_model_downloaded():
     if os.path.exists(MODEL_PATH):
         return
 
-    if not MODEL_URL or MODEL_URL == "":
+    if not MODEL_URL or MODEL_URL == "https://drive.google.com/file/d/1q4kJQPJf0-0jRyv2wfYV7XCjMxYLX-OT":
         raise RuntimeError(
             "MODEL_URL is not set. Please configure a valid link to the model file."
         )
 
     try:
-        import gdown
         print(f"[model] Downloading from: {MODEL_URL}")
-        gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
+        gdown.download(MODEL_URL, MODEL_PATH, quiet=False,fuzzy=True)
     except Exception as e:
         raise RuntimeError(f"Model download failed: {e}")
 
