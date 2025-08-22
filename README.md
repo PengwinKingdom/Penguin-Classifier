@@ -21,7 +21,8 @@
   <li>Real-time prediction directly from uploaded images</li>
 </ul>
 
-<h2>✨ Project Structure</h2>
+## 📁 Project Structure
+```bash
   project/
 ├── model/
 │   ├── class_indices.json
@@ -38,6 +39,9 @@
 ├── train_model.py
 ├── app.py
 └── train_model.py
+```
+⚠️ Note: The file penguin_classifier.h5 is not included in the repository due to its large size.
+It will be downloaded from Google Drive when running the application using the MODEL_URL environment variable.
 
 <h2>📚 Topics I Learned</h2>
 <ul>
@@ -48,6 +52,24 @@
 </ul>
 
 ## ⚙️ Installation & Usage
+
+## 🛠️ Prerequisites
+
+- **Python 3.8+** must be installed on your system
+    - To check if Python is installed, run:
+      ```bash
+       python --version
+      ```
+- **pip** (Python package manager) should be available
+  - To check if pip is installed, run:
+      ```bash
+       pip --version
+      ```
+- **Flask and other dependencies** will be installed automatically using the command:
+  ```bash
+  pip install -r requirements.txt
+  ```
+
 ## 1. Clone the repository
    ```bash
    git clone https://github.com/PengwinKingdom/Penguin-Classifier.git
