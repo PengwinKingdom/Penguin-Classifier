@@ -1,10 +1,9 @@
-from flask import Flask, request,jsonify,render_template,redirect,url_for,session
+from flask import Flask, request,jsonify,render_template,redirect,url_for
 from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import load_img, img_to_array
+from tensorflow.keras.preprocessing.image import img_to_array
 import numpy as np
 import os
 from io import BytesIO
-from werkzeug.utils import secure_filename
 import base64
 from PIL import Image
 
@@ -15,8 +14,14 @@ app=Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 4 * 1024 * 1024  # 4MB
 
 MODEL_PATH = os.path.join("model", "penguin_classifier.h5")
+if not os.path.exists(MODEL_PATH):
+    raise FileNotFoundError(f"Model file not found at {MODEL_PATH}. Did Git LFS download it?")
+
+
 # Carga una sola vez al iniciar
 model=load_model(MODEL_PATH)
+dummy = np.zeros((1, 224, 224, 3), dtype=np.float32)
+model.predict(dummy, verbose=0)
 
 # List of penguin species supported by the model
 class_names =['Adelie','African','Chinstrap','Emperor',
