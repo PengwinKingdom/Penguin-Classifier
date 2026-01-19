@@ -2,6 +2,5 @@ env/
 __pycache__/
 *.pyc
 .DS_Store
-*.h5
 Penguin_species/
 static/uploads/

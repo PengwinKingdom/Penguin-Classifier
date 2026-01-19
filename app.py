@@ -5,7 +5,6 @@ import numpy as np
 import os
 from io import BytesIO
 from werkzeug.utils import secure_filename
-import gdown
 import base64
 from PIL import Image
 
@@ -15,25 +14,8 @@ app=Flask(__name__)
 # Limita tamaño de subida
 app.config["MAX_CONTENT_LENGTH"] = 4 * 1024 * 1024  # 4MB
 
-MODEL_DIR = "model"
-MODEL_PATH = os.path.join(MODEL_DIR, "penguin_classifier.h5")
-MODEL_URL = os.getenv("MODEL_URL", "https://drive.google.com/file/d/1q4kJQPJf0-0jRyv2wfYV7XCjMxYLX-OT")
-
-def ensure_model_downloaded():
-    os.makedirs(MODEL_DIR, exist_ok=True)
-    if os.path.exists(MODEL_PATH):
-        return
-
-    if not MODEL_URL:
-        raise RuntimeError("MODEL_URL is not set. Please configure a valid link to the model file.")
-
-    print(f"[model] Downloading from: {MODEL_URL}")
-    gdown.download(MODEL_URL, MODEL_PATH, quiet=False, fuzzy=True)
-
-# Descarga una vez en el arranque (no por request)
-ensure_model_downloaded()
-
-# Carga una vez en el arranque (no por request)
+MODEL_PATH = os.path.join("model", "penguin_classifier.h5")
+# Carga una sola vez al iniciar
 model=load_model(MODEL_PATH)
 
 # List of penguin species supported by the model
