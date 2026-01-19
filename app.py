@@ -6,6 +6,7 @@ import os
 from io import BytesIO
 import base64
 from PIL import Image
+import traceback
 
 
 app=Flask(__name__)
@@ -85,6 +86,8 @@ def predict():
         )
 
     except Exception as e:
+        print("ERROR /predict:", e)
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 
