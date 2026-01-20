@@ -20,7 +20,7 @@ if not os.path.exists(MODEL_PATH):
 
 
 # Carga una sola vez al iniciar
-model=load_model(MODEL_PATH)
+model = load_model(MODEL_PATH, compile=False)
 dummy = np.zeros((1, 224, 224, 3), dtype=np.float32)
 model.predict(dummy, verbose=0)
 
